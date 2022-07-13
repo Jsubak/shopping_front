@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+// import Userservice from "../services/user.service";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,9 +19,23 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ProductList = () => {
     const [product, setProduct] = useState([])
-    const [setCurrentProduct] = useState(null)
-    const [currentIndex, setCurrentIndex] = useState(-1)
     const [searchName, setSearchName] = useState("")
+
+    // const [content, setContent] = useState("");
+    // useEffect(() => {
+    //   Userservice.getPublicContent().then(
+    //     (response) => {
+    //       setContent(response.data);
+    //     },
+    //     (error) => {
+    //       const _content =
+    //         (error.response && error.response.data) ||
+    //         error.message ||
+    //         error.toString();
+    //       setContent(_content);
+    //     }
+    //   );
+    // }, []);
 
     useEffect(() => {
         retrieveProduct();
@@ -40,17 +55,6 @@ const ProductList = () => {
             .catch(e => {
                 console.log(e);
             })
-    }
-
-    // const refreshList = () => {
-    //     retrieveProduct();
-    //     setCurrentProduct(null);
-    //     setCurrentIndex(-1);
-    // }
-
-    const setActiveProduct = (product, index) => {
-        setCurrentProduct(product);
-        setCurrentIndex(index);
     }
 
     const findByName = () => {
@@ -89,17 +93,16 @@ const ProductList = () => {
                     <Grid className="list-box" container spacing={2}>
                     {product &&
                         product.map((product, index) => (
-                            <Grid item xs={4} key={index}>
-                                <Item className={"list-group-item" + (index === currentIndex ? "active" : "")}
-                                onClick={() => setActiveProduct(product, index)}
-                                key={index}>
-                                    {product.productname}
-                                    {/* <img src={`http://localhost:8081/public${product.productimg}`} alt="img1"/> */}
+                            <Grid className="list-box-grid" item xs={4} key={index}>
+                                <Item className="list-box-item" key={index}>
+                                    <img src={product.productimg} alt="img1"/>
+                                    <Link className="list-box-item-des" to={`/product/${product.productid}`}>{product.productname}</Link>
                                 </Item>
                             </Grid>    
                         ))}
                     </Grid>
                 </Box>
+                <div></div>
             </div>
         </div>
     )

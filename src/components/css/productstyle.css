@@ -60,3 +60,20 @@
     width: 1200px;
     margin: 0 auto;
 }
+.List .list-box-item{
+    box-shadow: 2px 5px 5px #aaa;
+}
+
+.List .list-box-item img {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+}
+
+.List .list-box .list-box-item-des {
+    display: block;
+    font-size: 24px;
+    color: #aaa;
+    text-decoration: none;
+}
