@@ -1,0 +1,16 @@
+import http from "../http-common";
+
+const create = data => {
+    return http.post("/user", data);
+}
+
+const findById = userid => {
+    return http.get(`/user?userid=${userid}`);
+}
+
+const UserService = {
+    create,
+    findById
+}
+
+export default UserService

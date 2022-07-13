@@ -1,0 +1,79 @@
+* {
+    list-style: none;
+}
+
+.login ul{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    margin-right: 40px;
+}
+
+.login ul li:first-child {
+    padding-right: 8px;
+}
+
+.menu ul{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.content {
+    display: block;
+    margin: 0 auto;
+}
+
+.search-box {
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box input {
+    padding: 14px;
+    width: 200px;
+    margin-right: 20px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+}
+
+
+.search-box button {
+    padding: 14px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    background-color: #aaa;
+}
+
+.List h5 {
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.List .list-box{
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 1200px;
+    margin: 0 auto;
+}
+.List .list-box-item{
+    box-shadow: 2px 5px 5px #aaa;
+}
+
+.List .list-box-item img {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+}
+
+.List .list-box .list-box-item-des {
+    display: block;
+    font-size: 24px;
+    color: #aaa;
+    text-decoration: none;
+}
