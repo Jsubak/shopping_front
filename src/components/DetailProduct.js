@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProductService from "../services/ProductService";
 import { Link } from "react-router-dom";
+import OrderService from "../services/orders.service";
+import { useNavigate } from 'react-router-dom';
 
 
-const DetailProduct = props => {
+const DetailProduct = () => {
+    let navigate = useNavigate(); 
+
     const { id } = useParams();
-    let navigate = useNavigate();
+
+    const [orders] = useState({
+        userid: '1234',
+        productid: id
+    })
 
     const [currentProduct, setCurrentProduct] = useState("");
 
@@ -26,21 +34,31 @@ const DetailProduct = props => {
             getProduct(id);
     }, [id]);
 
+    const saveOrders = () => {
+        var data = {
+            userid: orders.userid,
+            productid: orders.productid,
+        }
+        OrderService.create(data)
+            .then(response => {
+                navigate("/orders");
+                window.location.reload();
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }
+
     return (
         <div>
-            {currentProduct ? (
-                <div className="edit-form">
-                    <Link to={"/product"}>목록으로</Link>
-                    <div>{currentProduct.productname}</div>
-                    <div>{currentProduct.productdes}</div>
-                    <button>결제하기</button>
-                </div>
-            ) : (
-                <div>
-                    <br />
-                    <p>????</p>
-                </div>
-            )}
+            <div className="">
+                <Link to={"/product"}>목록으로</Link>
+                <div>{currentProduct.productname}</div>
+                <div>{currentProduct.productdes}</div>
+                <div><img src={currentProduct.productimg} alt="img2"/></div>
+                <button onClick={saveOrders}>주문하기</button>
+            </div>
         </div>
     );
 }

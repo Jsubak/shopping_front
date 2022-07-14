@@ -8,6 +8,7 @@ import './App.css';
 import Register from './components/Register'
 import AuthService from './services/auth.service'
 import DetailProduct from './components/DetailProduct'
+import Order from './components/Order'
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
           <Route path='/register' element={<Register/>} />
           <Route path='/add' element={<AddProduct/>} />
           <Route path='/product/:id' element={<DetailProduct/>} />
+          <Route path='/orders' element={<Order />} />
         </Routes>
       </div>
     </div>
