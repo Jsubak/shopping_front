@@ -21,14 +21,14 @@ const Login = () => {
     const form = useRef();
     const checkbtn = useRef();
     
-    const [username, setUsername] = useState("");
+    const [userid, setUserid] = useState("")
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-    const onChangeUsername = (e) => {
-        const username = e.target.value
-        setUsername(username);
+    const onChangeUserid = (e) => {
+      const userid = e.target.value;
+      setUserid(userid)
     }
 
     const onChangePassword = (e) => {
@@ -44,7 +44,7 @@ const Login = () => {
         // form.current.validateAll();
 
         if (checkbtn) {
-            AuthService.login(username, password).then(
+            AuthService.login(userid, password).then(
               () => {
                 navigate("/product");
                 window.location.reload();
@@ -68,17 +68,15 @@ const Login = () => {
     return (
         <div>
             <div>
-                profile img
-        
             <form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <div className="form-group">
+            <label htmlFor="userid">Userid</label>
             <input
               type="text"
               className="form-control"
-              name="username"
-              value={username}
-              onChange={onChangeUsername}
+              name="userid"
+              value={userid}
+              onChange={onChangeUserid}
               validations={[required]}
             />
           </div>

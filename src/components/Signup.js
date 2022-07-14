@@ -68,7 +68,7 @@ const Signup = () => {
                             name="userid"
                         />
                     </div>
-                    <button>아이디 중복 검사</button>
+
                     <div>
                         <label htmlFor="username">NAME</label>
                         <input

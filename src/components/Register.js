@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
@@ -46,11 +46,22 @@ const Register = () => {
   const form = useRef();
   const checkBtn = useRef();
 
+  const [userid, setUserid] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+
+  // 처음 들어갔을 때 버튼 밑에 글자가 안뜨도록 설정
+  useEffect(() => {
+    setMessage(" ");
+  }, [])
+
+  const onChangeUserid = (e) => {
+    const userid = e.target.value;
+    setUserid(userid)
+  }
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -74,7 +85,7 @@ const Register = () => {
     setSuccessful(false);
 
     if (checkBtn) {
-      AuthService.register(username, email, password).then(
+      AuthService.register(userid, username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -100,6 +111,18 @@ const Register = () => {
         <form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
+              <div className="">
+                <label htmlFor="userid">Userid</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="userid"
+                  required
+                  value={userid}
+                  onChange={onChangeUserid}
+                />
+              </div>
+
               <div className="">
                 <label htmlFor="username">Username</label>
                 <input
@@ -144,11 +167,17 @@ const Register = () => {
 
           {message ? (
             <div className="">
-              <div>
-                {message}
-              </div>
+                <div>
+                  {message}
+                </div>
             </div>
-          ) : (<div><div>회원가입 완료</div> <Link to={"/login"}>로그인화면으로 가기</Link></div>)}
+            ) : (
+            <div>
+              <div>회원가입 완료</div>
+              <Link to={"/login"}>로그인화면으로 가기</Link>
+            </div>
+            )
+          }
           <button style={{ display: "none" }} ref={checkBtn} />
         </form>
       </div>
