@@ -11,12 +11,17 @@ const DetailProduct = () => {
 
     const { id } = useParams();
 
-    const [orders] = useState({
-        userid: '1234',
-        productid: id
-    })
-
     const [currentProduct, setCurrentProduct] = useState("");
+
+    const [orders, setOrders] = useState({})
+
+    useEffect(() => {
+        const getCurrentUser = JSON.parse(localStorage.getItem("user"));
+        if (getCurrentUser) {
+          setOrders({userid: getCurrentUser.userid,
+          productid: id})
+        }
+    }, [id]);
 
     const getProduct = id => {
         ProductService.get(id)
@@ -39,10 +44,10 @@ const DetailProduct = () => {
             userid: orders.userid,
             productid: orders.productid,
         }
+
         OrderService.create(data)
             .then(response => {
                 navigate("/orders");
-                window.location.reload();
                 console.log(response.data);
             })
             .catch(e => {

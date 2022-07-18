@@ -96,6 +96,7 @@ const ProductList = () => {
                             <Grid className="list-box-grid" item xs={4} key={index}>
                                 <Item className="list-box-item" key={index}>
                                     <Link to={`/product/${product.productid}`}><img src={product.productimg} alt="img1"/></Link>
+                                    <div>{product.productprice}</div>
                                     <Link className="list-box-item-des" to={`/product/${product.productid}`}>{product.productname}</Link>
                                 </Item>
                             </Grid>    

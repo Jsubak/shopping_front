@@ -35,15 +35,16 @@
     margin-right: 20px;
     outline: none;
     border: 1px solid #aaa;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 
 .search-box button {
     padding: 14px;
     border: 1px solid #aaa;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #aaa;
+    color: #fff;
 }
 
 .List h5 {
@@ -74,7 +75,7 @@
 
 .List .list-box .list-box-item-des {
     display: block;
-    font-size: 24px;
-    color: #aaa;
+    font-size: 20px;
+    color: #343434;
     text-decoration: none;
 }
