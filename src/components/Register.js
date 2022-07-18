@@ -1,16 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
-
-// const required = (value) => {
-//   if (!value) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         This field is required!
-//       </div>
-//     );
-//   }
-// };
 
 // const validEmail = (value) => {
 //   if (!isEmail(value)) {
@@ -46,37 +36,31 @@ const Register = () => {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [userid, setUserid] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  let navigate = useNavigate();
+
+  const [userInput, setUserinput] = useState({
+    userid: "",
+    username: "",
+    email: "",
+    password: "",
+  })
+
+  const {userid, username, email, password} = userInput;
+
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
   // 처음 들어갔을 때 버튼 밑에 글자가 안뜨도록 설정
-  useEffect(() => {
-    setMessage(" ");
-  }, [])
+  // useEffect(() => {
+  //   setMessage(" ");
+  // }, [])
 
-  const onChangeUserid = (e) => {
-    const userid = e.target.value;
-    setUserid(userid)
+  const onChangeInput = (e) => {
+    setUserinput({
+      ...userInput,
+      [e.target.name]: e.target.value
+    }) 
   }
-
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
-  };
-
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  };
-
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -89,6 +73,8 @@ const Register = () => {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
+          alert("회원가입 성공!")
+          navigate("/login");
         },
         (error) => {
           const resMessage =
@@ -119,7 +105,7 @@ const Register = () => {
                   name="userid"
                   required
                   value={userid}
-                  onChange={onChangeUserid}
+                  onChange={onChangeInput}
                 />
               </div>
 
@@ -131,7 +117,7 @@ const Register = () => {
                   name="username"
                   required
                   value={username}
-                  onChange={onChangeUsername}
+                  onChange={onChangeInput}
                 />
               </div>
 
@@ -143,7 +129,7 @@ const Register = () => {
                   name="email"
                   required
                   value={email}
-                  onChange={onChangeEmail}
+                  onChange={onChangeInput}
                 />
               </div>
 
@@ -155,7 +141,7 @@ const Register = () => {
                   required
                   name="password"
                   value={password}
-                  onChange={onChangePassword}
+                  onChange={onChangeInput}
                 />
               </div>
 
@@ -165,18 +151,13 @@ const Register = () => {
             </div>
           )}
 
-          {message ? (
+          {message && (
             <div className="">
                 <div>
                   {message}
                 </div>
             </div>
-            ) : (
-            <div>
-              <div>회원가입 완료</div>
-              <Link to={"/login"}>로그인화면으로 가기</Link>
-            </div>
-            )
+            ) 
           }
           <button style={{ display: "none" }} ref={checkBtn} />
         </form>

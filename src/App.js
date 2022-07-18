@@ -35,9 +35,10 @@ function App() {
                 <Link to={"/product"} className="">
                   {currentUser.username}
                 </Link>
+                님 환영합니다
               </li>
               <li className="nav-item">
-                <a href="/login" className="" onClick={logOut}>
+                <a href="/product" className="" onClick={logOut}>
                   LogOut
                 </a>
               </li>
@@ -56,7 +57,6 @@ function App() {
               </li>
             </div>
           )}
-
           {/* <li><Link to={"/login"} className="">Login</Link></li>
           <li><Link to={"/register"} className="">Sign Up</Link></li> */}
         </ul>
@@ -64,6 +64,7 @@ function App() {
       <nav className='menu'>
         <ul>
           <li><Link to={"/add"}>상품등록</Link></li>
+          <li><Link to={"/product"}>상품목록</Link></li>
         </ul>
       </nav>
       <div className='container'>
