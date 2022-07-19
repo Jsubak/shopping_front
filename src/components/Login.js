@@ -10,6 +10,7 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
   const [userInput, setUserinput] = useState({
     userid: "",
     password: "",
@@ -18,10 +19,8 @@ const Login = () => {
   const {userid, password} = userInput
 
   const onChange = (e) => {
-    setUserinput({
-      ...userInput,
-      [e.target.name]: e.target.value
-    })
+    const { name, value } = e.target
+    setUserinput({...userInput, [name]: value})
   }
 
   const handleLogin = (e) => {
@@ -61,7 +60,7 @@ const Login = () => {
               type="text"
               className="form-control"
               name="userid"
-              value={userid}
+              value={userInput.userid}
               onChange={onChange}
             />
           </div>
@@ -71,7 +70,7 @@ const Login = () => {
               type="password"
               className="form-control"
               name="password"
-              value={password}
+              value={userInput.password}
               onChange={onChange}
             />
           </div>

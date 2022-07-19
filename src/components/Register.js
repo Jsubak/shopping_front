@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 // const validEmail = (value) => {
@@ -45,22 +45,13 @@ const Register = () => {
     password: "",
   })
 
-  const {userid, username, email, password} = userInput;
+  const onChangeValue = e => {
+    const { name, value } = e.target
+    setUserinput({...userInput, [name]: value})
+  }
 
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
-
-  // 처음 들어갔을 때 버튼 밑에 글자가 안뜨도록 설정
-  // useEffect(() => {
-  //   setMessage(" ");
-  // }, [])
-
-  const onChangeInput = (e) => {
-    setUserinput({
-      ...userInput,
-      [e.target.name]: e.target.value
-    }) 
-  }
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -69,7 +60,7 @@ const Register = () => {
     setSuccessful(false);
 
     if (checkBtn) {
-      AuthService.register(userid, username, email, password).then(
+      AuthService.register(userInput.userid, userInput.username, userInput.email, userInput.password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -104,8 +95,8 @@ const Register = () => {
                   className="form-control"
                   name="userid"
                   required
-                  value={userid}
-                  onChange={onChangeInput}
+                  value={userInput.userid}
+                  onChange={onChangeValue}
                 />
               </div>
 
@@ -116,8 +107,8 @@ const Register = () => {
                   className="form-control"
                   name="username"
                   required
-                  value={username}
-                  onChange={onChangeInput}
+                  value={userInput.username}
+                  onChange={onChangeValue}
                 />
               </div>
 
@@ -128,8 +119,8 @@ const Register = () => {
                   className="form-control"
                   name="email"
                   required
-                  value={email}
-                  onChange={onChangeInput}
+                  value={userInput.email}
+                  onChange={onChangeValue}
                 />
               </div>
 
@@ -140,8 +131,8 @@ const Register = () => {
                   className="form-control"
                   required
                   name="password"
-                  value={password}
-                  onChange={onChangeInput}
+                  value={userInput.password}
+                  onChange={onChangeValue}
                 />
               </div>
 
