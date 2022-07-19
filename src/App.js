@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import ProductList from "./components/ProductList"
 import Login from "./components/Login"
 // import Signup from './components/Signup'
@@ -10,7 +10,7 @@ import AuthService from './services/auth.service'
 import DetailProduct from './components/DetailProduct'
 import Order from './components/Order'
 
-function App() {
+function App({component: Component, ...rest}) {
 
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -75,7 +75,7 @@ function App() {
           <Route path='/register' element={<Register/>} />
           <Route path='/add' element={<AddProduct/>} />
           <Route path='/product/:id' element={<DetailProduct/>} />
-          <Route path='/orders' element={<Order />} />
+          <Route path='/orders' element={currentUser ? <Order/> : <Navigate to="/login" />}/>
         </Routes>
       </div>
     </div>
