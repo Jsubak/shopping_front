@@ -10,9 +10,9 @@ import AuthService from './services/auth.service'
 import DetailProduct from './components/DetailProduct'
 import Order from './components/Order'
 
-function App({component: Component, ...rest}) {
+function App() {
 
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -75,7 +75,7 @@ function App({component: Component, ...rest}) {
           <Route path='/register' element={<Register/>} />
           <Route path='/add' element={<AddProduct/>} />
           <Route path='/product/:id' element={<DetailProduct/>} />
-          <Route path='/orders' element={currentUser ? <Order/> : <Navigate to="/login" />}/>
+          <Route path='/orders' element={AuthService.getCurrentUser() ? <Order/> : <Navigate to="/login" />}/>
         </Routes>
       </div>
     </div>
