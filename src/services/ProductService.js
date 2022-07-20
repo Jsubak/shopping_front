@@ -16,6 +16,10 @@ const update = (id, data) => {
     return http.put(`/product/${id}`, data);
 }
 
+const buy = (data) => {
+    return http.put("/product", data);
+}
+
 const remove = id => {
     return http.delete(`/product/${id}`)
 }
@@ -30,7 +34,8 @@ const ProductService = {
     create,
     update,
     remove,
-    findByName
+    findByName,
+    buy
 }
 
 export default ProductService
