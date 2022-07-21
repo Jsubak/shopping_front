@@ -1,0 +1,108 @@
+
+.detail-box {
+    padding: 0 40px;
+    width: 1090px;
+    margin: 0 auto;
+    padding-left: 120px;
+    margin-bottom: 40px;
+}
+
+.detail-box .detail-arrow {
+    display: block;
+    margin-top: 10px;
+}
+
+.detail-box .detail-box-container {
+    display: flex;
+    padding-top: 10px;
+}
+
+.detail-box .detail-box-container img {
+    width: 430px;
+    height: 500px;
+    object-fit:cover;
+    margin-right: 70px;
+}
+
+.detail-box .detail-box-container .productbox {
+    width: 560px;
+}
+
+.detail-box .detail-box-container .productbox .productname {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.detail-box .detail-box-container .productbox .productdes {
+    font-size: 14px;
+    padding-bottom: 40px;
+}
+
+.detail-box .detail-box-container .productbox .productprice {
+    font-size: 28px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    color: rgba(0, 163, 192, 0.72);
+    border-bottom: 1px solid #eee;
+}
+
+.detail-box .detail-box-container .productbox .productprice span {
+    font-size: 20px;
+}
+
+.detail-box .detail-box-container .productbox .productcount {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-box .detail-box-container .productbox .sumbox {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+}
+
+.detail-box .detail-box-container .productbox .sumbox .calculator {
+    line-height: 1.8;
+    margin: 0 10px;
+}
+
+.detail-box .detail-box-container .productbox .sumbox .productcount-button {
+    background-color: transparent;
+    border: 1px solid #eee;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+}
+
+.detail-box .detail-box-container .productbox .productsum {
+    padding: 20px 0;
+    font-size: 28px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.detail-box .detail-box-container .productbox .productsum span {
+    font-size: 20px;
+}
+
+.detail-box .detail-box-container .productbox .productsum span:first-child {
+    font-size: 16px;
+}
+
+.detail-box .detail-box-container .productbox .ordersbtn {
+    display: block;
+    width: 300px;
+    background-color:rgba(0, 163, 192, 0.72);
+    color: #fff;
+    padding: 14px 20px;
+    text-align: center;
+    margin-left: 220px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.detail-box .detail-box-container .productbox .productsoldout {
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}

@@ -1,0 +1,60 @@
+.orderbox {
+    margin: 0 auto;
+    width: 1090px;
+    padding: 0 40px;
+}
+
+.orderbox .ordercontainer {
+    margin-left: 40px;
+}
+.orderbox .ordercontainer .addressbox {
+    padding-top: 10px;
+}
+
+.orderbox .ordercontainer .addressbox label {
+    padding-right: 60px;
+}
+
+.orderbox .ordercontainer .addressbox input {
+    width: 198px;
+    height: 30px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.orderbox .ordercontainer .addressbox button {
+    border: 1px solid #eee;
+    background-color: rgba(0, 163, 192, 0.72);
+    padding: 10px 20px;
+    margin-left: 10px;
+    color: #fff;
+}
+
+.orderbox .ordercontainer .addressbox .address-detail input,
+.orderbox .ordercontainer .addressbox .address-detail2 input {
+    margin-left: 89px;
+    width: 300px;
+    height: 30px;
+    border: 1px solid #eee;
+}
+
+.orderbox .ordercontainer .addressbox .address-detail2 {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.orderbox .ordercontainer .phonebox {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.orderbox .ordercontainer .phonebox label {
+    padding-right: 46px;
+}
+
+.orderbox .ordercontainer .phonebox input {
+    border: 1px solid #eee;
+    height: 30px;
+}

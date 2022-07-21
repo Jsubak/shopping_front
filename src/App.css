@@ -1,7 +1,5 @@
-@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
 * {
   text-decoration: none;
-  font-family: 'NanumSquare', sans-serif;
 }
 
 .App {
@@ -32,6 +30,33 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.login-box {
+  display: flex;
+  width: 1090px;
+  padding: 0 40px;
+  margin: 0 auto;
+  justify-content: flex-end;
+}
+
+.login-box .middleline {
+  margin-right: 10px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.login-box li Link,
+.login-box li a {
+  font-size: 12px;
+  color: #000;
+}
+
+.menu {
+  display: flex;
+  width: 1090px;
+  padding: 0 40px;
+  margin: 0 auto;
 }
 
 @keyframes App-logo-spin {

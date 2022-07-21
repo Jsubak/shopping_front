@@ -1,5 +1,7 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
 * {
     list-style: none;
+    font-family: 'NanumSquare', sans-serif;
 }
 
 .login ul{
@@ -32,20 +34,24 @@
 .search-box input {
     padding: 14px;
     width: 200px;
-    margin-right: 20px;
+    margin-right: 0px;
     outline: none;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+    border: 2px solid rgba(0, 163, 192, 0.72);
 }
 
 
 .search-box button {
-    padding: 14px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    background-color: #aaa;
+    padding: 16px;
+    border: 1px solid rgba(0, 163, 192, 0.72);
+    background-color: rgba(0, 163, 192, 0.72);
     color: #fff;
 }
+
+.search-box button img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(82deg) brightness(105%) contrast(105%);
+}
+
+
 
 .List h5 {
     text-align: center;
@@ -58,19 +64,14 @@
     padding: 0 40px;
     display: flex;
     justify-content: space-evenly;
-    width: 1200px;
+    width: 1130px;
     margin: 0 auto;
-}
-.List .list-box-item{
-    box-shadow: 2px 5px 5px #aaa;
 }
 
 .List .list-box-item img {
-    width: 300px;
-    height: 300px;
-    border: 2px solid #eee;
-    border-radius: 10px;
-    object-fit:cover
+    width: 330px;
+    height: 400px;
+    object-fit:cover;
 }
 
 .List .list-box .list-box-item-des {
@@ -78,4 +79,22 @@
     font-size: 20px;
     color: #343434;
     text-decoration: none;
+    padding-top: 10px;
+}
+
+.List .list-box .list-box-price {
+    font-size: 18px;
+    padding-top: 10px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.css-1633um2-MuiPaper-root {
+    box-shadow: none !important; 
+    text-align: left !important;
+}
+
+footer {
+    background-color: #eee;
+    height: 100px; 
 }
