@@ -30,29 +30,30 @@ function App() {
       <nav className='login'>
         <ul>
           {currentUser ? (
-            <div className="">
+            <div className="login-box">
               <li className="">
                 <Link to={"/product"} className="">
-                  {currentUser.username}
+                  {currentUser.username}님
                 </Link>
-                님 환영합니다
               </li>
+              <li className='middleline'>|</li>
               <li className="nav-item">
                 <a href="/product" className="" onClick={logOut}>
-                  LogOut
+                  로그아웃
                 </a>
               </li>
             </div>
           ) : (
-            <div className="navbar-nav ml-auto">
+            <div className="login-box">
               <li className="nav-item">
                 <Link to={"/login"} className="">
-                  Login
+                  로그인
                 </Link>
               </li>
+              <li className='middleline'>|</li>
               <li className="nav-item">
                 <Link to={"/register"} className="">
-                  Sign Up
+                  회원가입
                 </Link>
               </li>
             </div>
