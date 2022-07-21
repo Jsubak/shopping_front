@@ -2,19 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductService from "../services/ProductService";
 import { Link } from "react-router-dom";
+import './css/productdetail.css'
 
 const DetailProduct = () => {
 
     const { id } = useParams();
 
     const [currentProduct, setCurrentProduct] = useState("");
-    const [productnum, setProductnum] = useState(0)
+    const [productnum, setProductnum] = useState(1)
     const [price, setPrice] = useState(0)
+
 
     const getProduct = id => {
         ProductService.get(id)
             .then(response => {
                 setCurrentProduct(response.data);
+                setPrice(response.data.productprice);
                 console.log(response.data);
             })
             .catch(e => {
@@ -27,21 +30,11 @@ const DetailProduct = () => {
             getProduct(id);
     }, [id]);
 
-    // const quantityMinus = () => {
-    //     if (productnum > 1) {
-    //         setProductnum(productnum - 1);
-    //     }
-    // };
-    
-    // const quantityPlus = () => {
-    //     setProductnum(productnum + 1);
-    // }
-
     const modifynum = (num) => {
-        if(num === 'plus') {
+        if(num === 'plus' && productnum < currentProduct.productcount) {
             setProductnum(productnum + 1)
             setPrice(price + currentProduct.productprice)
-        } else if (num === 'minus' && productnum > 0) {
+        } else if (num === 'minus' && productnum > 1) {
             setProductnum(productnum - 1)
             setPrice(price - currentProduct.productprice)
         }
@@ -49,19 +42,34 @@ const DetailProduct = () => {
 
     return (
         <div>
-            <div className="">
-                <Link to={"/product"}>목록으로</Link>
-                <div>{currentProduct.productname}</div>
-                <div>{currentProduct.productdes}</div>
-                <div>{currentProduct.productprice}</div>
-                <div><img src={currentProduct.productimg} alt="img2"/></div>
-                <button onClick={() => modifynum('minus')} className="minus"> - </button>
-                <div className="calculator">{productnum}</div>
-                <button onClick={() => modifynum('plus')} className="plus"> + </button>
-                <div>{price}</div>
-
-                <Link to="/orders" state={{id: id, name: currentProduct.productname, count: productnum, price: price}}>주문하기</Link>
+            <div className="detail-box">
+                <Link className="detail-arrow" to={"/product"}><img src={'../images/left-arrow.png'} alt="left-arrow" /></Link>
+                <div className="detail-box-container">
+                    <div><img src={currentProduct.productimg} alt="img2"/></div>
+                    <div className="productbox">
+                        <div className="productname">{currentProduct.productname}</div>
+                        <div className="productdes">{currentProduct.productdes}</div>
+                        <div className="productprice">{currentProduct.productprice} <span>원</span></div>
+                        <div className="productcount"><span>남은 수량 : </span>{currentProduct.productcount}</div>
+                        <div>
+                        {currentProduct.productcount === 0 ? (
+                            <div className="productsoldout">품절입니다.</div>
+                        ) : (
+                        <div>
+                            <div className="sumbox">
+                                <button className="productcount-button" onClick={() => modifynum('minus')}> - </button>
+                                <div className="calculator">{productnum}</div>
+                                <button className="productcount-button" onClick={() => modifynum('plus')}> + </button>
+                            </div>
+                            <div className="productsum"><span>총 금액</span> {price} <span>원</span></div>
+                            <Link className="ordersbtn" to="/orders" state={{id: id, name: currentProduct.productname, count: productnum, price: price}}>주문하기</Link>
+                        </div>
+                        )}
+                        </div>
+                    </div>
+                </div> 
             </div>
+            <footer></footer>
         </div>
     );
 }
