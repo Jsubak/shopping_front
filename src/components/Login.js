@@ -1,19 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../services/auth.service";
 
 const Login = () => {
   let navigate = useNavigate();
 
-  const form = useRef();
-  const checkbtn = useRef();
-
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-
   const [userInput, setUserinput] = useState({
     userid: "",
-    password: "",
+    password: ""
   })
 
   const {userid, password} = userInput
@@ -26,9 +21,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setMessage("");
-    setLoading(true);
 
-    if (checkbtn) {
       AuthService.login(userid, password).then(
         () => {
           navigate("/product");
@@ -41,25 +34,23 @@ const Login = () => {
               error.response.data.message) ||
             error.message ||
             error.toString();
-          setLoading(false);
           setMessage(resMessage);
         }
-      );
-    } else {
-      setLoading(false)
-    }
+    );
   }
+
 
   return (
     <div>
       <div>
-        <form onSubmit={handleLogin} ref={form}>
+        <form onSubmit={handleLogin}>
           <div className="form-group">
             <label htmlFor="userid">Userid</label>
             <input
               type="text"
               className="form-control"
               name="userid"
+              required
               value={userInput.userid}
               onChange={onChange}
             />
@@ -70,18 +61,17 @@ const Login = () => {
               type="password"
               className="form-control"
               name="password"
+              required
               value={userInput.password}
               onChange={onChange}
             />
           </div>
           <div className="">
-            <button className="btn" disabled={loading}>
-              {loading && (
-                <span className=""></span>
-              )}
+            <button className="btn">
               <span>Login</span>
             </button>
           </div>
+
           {message && (
             <div className="">
               <div className="" role="alert">
@@ -89,7 +79,7 @@ const Login = () => {
               </div>
             </div>
           )}
-          <button style={{ display: "none" }} ref={checkbtn} />
+
         </form>
       </div>
     </div>
