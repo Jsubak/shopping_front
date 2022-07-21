@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import OrderService from "../services/orders.service";
 import {useDaumPostcodePopup} from "react-daum-postcode"
 import { useNavigate } from 'react-router-dom';
 import ProductService from "../services/ProductService";
-// import 'antd/dist/antd.min.css';
+import "./css/orders.css"
 
 const Order = () => {
 
@@ -89,18 +89,32 @@ const Order = () => {
     };
 
     return(
-        <div>
-            <label>주소</label>
-            <input type="text" name= "zone" value={zone || ""} onChange={onChangeValue} />
-            <input type="text" name="address2" value={address2 || ""} onChange={onChangeValue} />
-            <button type="primary" onClick={handleClick}>주소 검색</button>
-            <input type="text" name="address" value={orders.address || ""} onChange={onChangeValue} />
-            <label>연락처</label>
-            <input type="text" name="phone" value={orders.phone || ""} onChange={onChangeValue} />
-            <div>상품 이름 : {name}</div>
-            <div>수량 : {count}</div>
-            <button onClick={saveOrders}>주문 ㄲ</button>
-            <Link to={"/product"}>상품목록으로 돌아가기</Link>
+        <div className="orderbox">
+            <div className="ordercontainer">
+                <div className="addressbox">
+                    <label>주소</label>
+                    <input disabled type="text" name= "zone" value={zone || ""} onChange={onChangeValue} />
+                    <button onClick={handleClick}>주소 검색</button>
+                    <div className="address-detail">
+                        <input disabled type="text" name="address2" value={address2 || ""} onChange={onChangeValue} />
+                    </div>
+                    <div className="address-detail2">
+                        <input type="text" name="address" value={orders.address || ""} onChange={onChangeValue} />
+                    </div>
+                </div>
+                <div className="phonebox">
+                    <label>연락처</label>
+                    <input type="text" name="phone" value={orders.phone || ""} onChange={onChangeValue} />
+                </div>
+
+                <div>주문자 : {getCurrentUser.username}</div>
+                <div>상품 이름 : {name}</div>
+                <div>수량 : {count}</div>
+                <div>금액 : {price}</div>
+                <button onClick={saveOrders}>주문하기</button>
+
+                <Link to={"/product"}>상품목록으로 돌아가기</Link>
+            </div>
         </div>
     )
 }
