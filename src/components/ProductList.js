@@ -57,6 +57,12 @@ const ProductList = () => {
             })
     }
 
+    const onkey = (e) => {
+        if(e.key === 'Enter') {
+            findByName()
+        }
+    }
+
     const findByName = () => {
         ProductService.findByName(searchName)
             .then(response => {
@@ -76,14 +82,11 @@ const ProductList = () => {
                   className="form-control"
                   placeholder="상품명을 입력하세요"
                   value={searchName}
-                  onChange={onChangeSearchName} />
+                  onChange={onChangeSearchName}
+                  onKeyPress={onkey} />
                 <div className="search-buttonbox">
-                    <button
-                      className="btn"
-                      type="button"
-                      onClick={findByName}
-                    >
-                        검색
+                    <button className="btn" type="button" onClick={findByName}>
+                        <img src={'images/searh-icon.png'} alt="search-icon"/>                
                     </button>
                 </div>
             </div>
@@ -96,14 +99,14 @@ const ProductList = () => {
                             <Grid className="list-box-grid" item xs={4} key={index}>
                                 <Item className="list-box-item" key={index}>
                                     <Link to={`/product/${product.productid}`}><img src={product.productimg} alt="img1"/></Link>
-                                    <div>{product.productprice}</div>
                                     <Link className="list-box-item-des" to={`/product/${product.productid}`}>{product.productname}</Link>
+                                    <div className="list-box-price">{product.productprice}</div>
                                 </Item>
                             </Grid>    
                         ))}
                     </Grid>
                 </Box>
-                <div></div>
+                <footer></footer>
             </div>
         </div>
     )
