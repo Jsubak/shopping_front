@@ -30,6 +30,20 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+// const me = (userid) => {
+//   return axios
+//     .get(API_URL + "me", {
+//       userid
+//     })
+//     .then((response) => {
+//       if (response.data.accessToken) {
+//         localStorage.setItem("user", JSON.stringify(response.data));
+//       }
+
+//       return response.data;
+//     });
+// };
+
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
@@ -38,7 +52,7 @@ const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser,
+  getCurrentUser
 };
 
 export default AuthService;
