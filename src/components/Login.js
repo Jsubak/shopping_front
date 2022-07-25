@@ -25,7 +25,6 @@ const Login = () => {
       AuthService.login(userid, password).then(
         () => {
           navigate("/product");
-          window.location.reload();
         },
         (error) => {
           const resMessage =
@@ -51,7 +50,6 @@ const Login = () => {
               className="form-control"
               name="userid"
               required
-              value={userInput.userid}
               onChange={onChange}
             />
           </div>
@@ -62,7 +60,6 @@ const Login = () => {
               className="form-control"
               name="password"
               required
-              value={userInput.password}
               onChange={onChange}
             />
           </div>

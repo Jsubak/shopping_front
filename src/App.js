@@ -9,6 +9,8 @@ import Register from './components/Register'
 import AuthService from './services/auth.service'
 import DetailProduct from './components/DetailProduct'
 import Order from './components/Order'
+import Mypage from './components/Mypage'
+import MypageOne from './components/MypageOne'
 
 function App() {
 
@@ -25,6 +27,7 @@ function App() {
     AuthService.logout();
   };
 
+
   return (
     <div>
       <nav className='login'>
@@ -32,7 +35,7 @@ function App() {
           {currentUser ? (
             <div className="login-box">
               <li className="">
-                <Link to={"/product"} className="">
+                <Link to={"/user"} className="">
                   {currentUser.username}님
                 </Link>
               </li>
@@ -72,11 +75,13 @@ function App() {
         <Routes>
           <Route path='/' element={<ProductList/>} />
           <Route path='/product' element={<ProductList/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/login' component={setCurrentUser} element={<Login/>}/>
           <Route path='/register' element={<Register/>} />
           <Route path='/add' element={<AddProduct/>} />
           <Route path='/product/:id' element={<DetailProduct/>} />
           <Route path='/orders' element={AuthService.getCurrentUser() ? <Order/> : <Navigate to="/login" />}/>
+          <Route path='/user' element={<Mypage /> } />
+          <Route path='/orderinfo' element={<MypageOne />} />
         </Routes>
       </div>
     </div>
