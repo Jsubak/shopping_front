@@ -95,12 +95,12 @@ const ProductList = () => {
                 <Box className="list-group" sx={{ flexGrow: 1 }}>
                     <Grid className="list-box" container spacing={2}>
                     {product &&
-                        product.map((product, index) => (
+                        product.map((products, index) => (
                             <Grid className="list-box-grid" item xs={4} key={index}>
-                                <Item className="list-box-item" key={index}>
-                                    <Link to={`/product/${product.productid}`}><img src={product.productimg} alt="img1"/></Link>
-                                    <Link className="list-box-item-des" to={`/product/${product.productid}`}>{product.productname}</Link>
-                                    <div className="list-box-price">{product.productprice}</div>
+                                <Item className="list-box-item">
+                                    <Link to={`/product/${products.productid}`}><img src={products.productimg} alt="img1"/></Link>
+                                    <Link className="list-box-item-des" to={`/product/${products.productid}`}>{products.productname}</Link>
+                                    <div className="list-box-price">{products.productprice}</div>
                                 </Item>
                             </Grid>    
                         ))}
