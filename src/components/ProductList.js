@@ -98,7 +98,7 @@ const ProductList = () => {
                         product.map((products, index) => (
                             <Grid className="list-box-grid" item xs={4} key={index}>
                                 <Item className="list-box-item">
-                                    <Link to={`/product/${products.productid}`}><img src={products.productimg} alt="img1"/></Link>
+                                    <Link className="list-item-img" to={`/product/${products.productid}`}><img src={products.productimg} alt="img1"/></Link>
                                     <Link className="list-box-item-des" to={`/product/${products.productid}`}>{products.productname}</Link>
                                     <div className="list-box-price">{products.productprice}</div>
                                 </Item>

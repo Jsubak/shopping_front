@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
-
-//비밀번호 유효성 검사
-// const checkPassword = (e) => {
-//   //  8 ~ 10자 영문, 숫자 조합
-//   var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/
-//   // 형식에 맞는 경우 true 리턴
-//  console.log('비밀번호 유효성 검사 :: ', regExp.test(e.target.value))
-// }
+import "./css/register.css"
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -82,73 +77,52 @@ const Register = () => {
   return (
     <div>
       <div>
-        <form onSubmit={handleRegister}>
+        <form className="registerbox" onSubmit={handleRegister}>
           {!successful && (
             <div>
-              <div className="">
-                <label htmlFor="userid">Userid</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="userid"
-                  required
-                  onChange={onChangeValue}
-                />
+              <div className="register-item">
+                <label className="register-item-label" htmlFor="userid">아이디</label>
+                <div className="reg-input">
+                  <TextField id="Userid" label="Userid" name="userid" required onChange={onChangeValue} variant="outlined" />
+                </div>
               </div>
 
-              <div className="">
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="username"
-                  required
-                  onChange={onChangeValue}
-                />
+              <div className="register-item">
+                <label className="register-item-label" htmlFor="username">닉네임</label>
+                <div className="reg-input">
+                  <TextField id="Username" label="Username" name="username" required onChange={onChangeValue} variant="outlined" />
+                </div>
               </div>
 
-              <div className="">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  required
-                  onChange={onChangeValue}
-                />
+              <div className="register-item">
+                <label className="register-item-label" htmlFor="email">이메일</label>
+                <div className="reg-input">
+                  <TextField id="Email" label="Email" name="email" required onChange={onChangeValue} variant="outlined" />
+                </div>
               </div>
 
-              <div className="">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  required
-                  name="password"
-                  // onBlur={checkPassword}
-                  onChange={onChangeValue}
-                />
+              <div className="register-item">
+                <label className="register-item-label" htmlFor="password">비밀번호</label>
+                <div className="reg-input">
+                  <TextField type="password" id="Password" label="Password" name="password" required onChange={onChangeValue} variant="outlined" />
+                </div>
               </div>
 
-              <div className="">
-                <label htmlFor="passwordconfirm">Passwordconfirm</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  required
-                  name="passwordconfirm"
-                  onChange={onChangeValue}
-                />
+              <div className="register-item">
+                <label className="register-item-label" htmlFor="passwordconfirm">비밀번호 확인</label>
+                <div className="reg-input">
+                  <TextField type="password" id="passwordconfirm" label="passwordconfirm" name="passwordconfirm" required onChange={onChangeValue} variant="outlined" />
+                </div>
               </div>
 
-              <div className="">
-                <button className="" disabled={!getIsActive} onClick={handleButtonValid}>회원가입</button>
+              <div className="register-item">
+                <Button type="submit" variant="contained" disabled={!getIsActive} onClick={handleButtonValid}>회원가입</Button>
               </div>
             </div>
           )}
 
           {message && (
-            <div className="">
+            <div className="error-mes">
                 <div>
                   {message}
                 </div>
