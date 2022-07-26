@@ -1,0 +1,29 @@
+.loginbox {
+    padding: 0 40px;
+    width: 1090px;
+    margin: 0 auto;
+    padding-left: 120px;
+    margin-top: 40px;
+}
+
+.login-item .login-item-label {
+    line-height: 4;
+    padding-right: 40px;
+}
+.login-item {
+    display: flex;
+    justify-content: flex-end;
+}
+.login-item .log-input{
+    width: 958px;
+    margin-bottom: 30px;
+}
+
+.login-item Button {
+    margin-right: 764px;
+}
+
+.error-mes {
+    color: red;
+    padding-top: 30px;
+}

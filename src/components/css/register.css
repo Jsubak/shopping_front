@@ -1,0 +1,49 @@
+.registerbox {
+    padding: 0 40px;
+    width: 1090px;
+    margin: 0 auto;
+    padding-left: 120px;
+    margin-top: 40px;
+}
+
+.register-item .register-item-label {
+    line-height: 4;
+    padding-right: 40px;
+}
+.register-item {
+    display: flex;
+    justify-content: flex-end;
+}
+.register-item .reg-input{
+    width: 958px;
+    margin-bottom: 30px;
+}
+
+.register-item Button {
+    margin-right: 764px;
+}
+
+.error-mes {
+    color: red;
+    padding-top: 30px;
+}
+
+/* mui */
+
+.MuiOutlinedInput-root.Mui-focused fieldset{
+    border-color: rgba(0, 163, 192, 0.72) !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+    color: rgba(0, 163, 192, 0.72) !important;
+}
+
+.MuiButton-root {
+    background-color: rgba(0, 163, 192, 0.72) !important;
+    width: 330px;
+    height: 50px;
+}
+
+.MuiButton-root:disabled {
+    background-color: #ddd !important;
+}

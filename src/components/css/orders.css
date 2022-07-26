@@ -8,7 +8,7 @@
     margin-left: 40px;
 }
 .orderbox .ordercontainer .addressbox {
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 .orderbox .ordercontainer .addressbox label {
@@ -28,6 +28,10 @@
     padding: 10px 20px;
     margin-left: 10px;
     color: #fff;
+}
+
+.orderbox .ordercontainer .addressbox button:hover {
+    background-color: rgba(4, 147, 173, 0.72);
 }
 
 .orderbox .ordercontainer .addressbox .address-detail input,
@@ -57,4 +61,30 @@
 .orderbox .ordercontainer .phonebox input {
     border: 1px solid #eee;
     height: 30px;
+}
+
+.ordererbox .orderer-item {
+    padding-bottom: 30px;
+}
+
+.ordererbox .orderer-item span {
+    padding-left: 46px;
+}
+
+.orderbox .orderbtn {
+    width: 180px;
+    height: 30px;
+    border: none;
+    background-color: rgba(0, 163, 192, 0.72);
+    color: #fff;
+}
+
+.orderbox .orderbtn:hover {
+    background-color: rgba(4, 147, 173, 0.72);
+}
+
+.orderbox .order-link {
+    display: block;
+    padding-top: 30px;
+    margin-bottom: 40px;
 }
