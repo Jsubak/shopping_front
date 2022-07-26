@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import ProductList from "./components/ProductList"
 import Login from "./components/Login"
-// import Signup from './components/Signup'
 import AddProduct from './components/AddProduct'
 import './App.css';
 import Register from './components/Register'
@@ -16,16 +15,17 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState();
 
+  const logOut = () => {
+    AuthService.logout();
+  };
+
+  //로그인 유지
   useEffect(() => {
     const user = AuthService.getCurrentUser();
     if (user) {
       setCurrentUser(user);
     }
   }, []);
-
-  const logOut = () => {
-    AuthService.logout();
-  };
 
 
   return (
@@ -34,20 +34,22 @@ function App() {
         <ul>
           {currentUser ? (
             <div className="login-box">
+              <div className='logo'><Link className='log-link' to={"/product"}>Shopping Mall</Link></div>
               <li className="">
                 <Link to={"/user"} className="">
-                  {currentUser.username}님
+                  {currentUser.userid}님
                 </Link>
               </li>
               <li className='middleline'>|</li>
               <li className="nav-item">
-                <a href="/product" className="" onClick={logOut}>
+                <a href="/product" onClick={logOut}>
                   로그아웃
                 </a>
               </li>
             </div>
           ) : (
             <div className="login-box">
+              <div className='logo'><Link className='log-link' to={"/product"}>Shopping Mall</Link></div>
               <li className="nav-item">
                 <Link to={"/login"} className="">
                   로그인
@@ -61,21 +63,19 @@ function App() {
               </li>
             </div>
           )}
-          {/* <li><Link to={"/login"} className="">Login</Link></li>
-          <li><Link to={"/register"} className="">Sign Up</Link></li> */}
         </ul>
       </nav>
-      <nav className='menu'>
+      {/* <nav className='menu'>
         <ul>
           <li><Link to={"/add"}>상품등록</Link></li>
           <li><Link to={"/product"}>상품목록</Link></li>
         </ul>
-      </nav>
+      </nav> */}
       <div className='container'>
         <Routes>
           <Route path='/' element={<ProductList/>} />
           <Route path='/product' element={<ProductList/>} />
-          <Route path='/login' component={setCurrentUser} element={<Login/>}/>
+          <Route path='/login' element={<Login setCurrentUser={setCurrentUser} /> }/>
           <Route path='/register' element={<Register/>} />
           <Route path='/add' element={<AddProduct/>} />
           <Route path='/product/:id' element={<DetailProduct/>} />

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../services/auth.service";
+import "./css/login.css"
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
 
-const Login = () => {
+const Login = ({setCurrentUser}) => {
   let navigate = useNavigate();
 
   const [message, setMessage] = useState("");
@@ -25,6 +28,7 @@ const Login = () => {
       AuthService.login(userid, password).then(
         () => {
           navigate("/product");
+          setUserinput(setCurrentUser)
         },
         (error) => {
           const resMessage =
@@ -42,36 +46,28 @@ const Login = () => {
   return (
     <div>
       <div>
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label htmlFor="userid">Userid</label>
-            <input
-              type="text"
-              className="form-control"
-              name="userid"
-              required
-              onChange={onChange}
-            />
+        <form className="loginbox" onSubmit={handleLogin}>
+          <div className="login-item">
+            <label className="login-item-label" htmlFor="userid">로그인</label>
+            <div className="log-input">
+              <TextField id="Userid" label="Userid" name="userid" required onChange={onChange} variant="outlined" />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              required
-              onChange={onChange}
-            />
+          <div className="login-item">
+            <label className="login-item-label" htmlFor="password">비밀번호</label>
+            <div className="log-input">
+              <TextField type="password" id="Password" label="Password" name="password" required onChange={onChange} variant="outlined" />
+            </div>
           </div>
-          <div className="">
-            <button className="btn">
-              <span>Login</span>
-            </button>
+          <div className="login-item">
+            <Button variant="contained"  type="submit">
+              <span>로그인</span>
+            </Button>
           </div>
 
           {message && (
-            <div className="">
-              <div className="" role="alert">
+            <div className="error-mes">
+              <div>
                 {message}
               </div>
             </div>
