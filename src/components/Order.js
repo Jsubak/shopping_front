@@ -37,7 +37,11 @@ const Order = () => {
             productprice : orders.productprice
         }
 
-        OrderService.create(data)
+        if(orders.address === undefined || orders.phone === null) {
+            alert("주소와 연락처를 입력해주세요")
+
+        } else {
+            OrderService.create(data)
             .then(response => {
                 setOrders({
                     address: zone + address2 + response.data.address,
@@ -57,7 +61,8 @@ const Order = () => {
             })
             .catch(e => {
                 console.log(e)
-            })
+            }) 
+        }
     }
 
     const scriptUrl = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
@@ -89,32 +94,38 @@ const Order = () => {
     };
 
     return(
-        <div className="orderbox">
-            <div className="ordercontainer">
-                <div className="addressbox">
-                    <label>주소</label>
-                    <input disabled type="text" name= "zone" value={zone || ""} onChange={onChangeValue} />
-                    <button onClick={handleClick}>주소 검색</button>
-                    <div className="address-detail">
-                        <input disabled type="text" name="address2" value={address2 || ""} onChange={onChangeValue} />
+        <div>
+            <div className="orderbox">
+                <div className="ordercontainer">
+                    <div className="addressbox">
+                        <label>주소</label>
+                        <input disabled type="text" name= "zone" value={zone || ""} onChange={onChangeValue} />
+                        <button onClick={handleClick}>주소 검색</button>
+                        <div className="address-detail">
+                            <input disabled type="text" name="address2" value={address2 || ""} onChange={onChangeValue} required />
+                        </div>
+                        <div className="address-detail2">
+                            <input type="text" name="address" value={orders.address || ""} onChange={onChangeValue} required />
+                        </div>
                     </div>
-                    <div className="address-detail2">
-                        <input type="text" name="address" value={orders.address || ""} onChange={onChangeValue} />
+                    <div className="phonebox">
+                        <label>연락처</label>
+                        <input type="text" name="phone" value={orders.phone || ""} onChange={onChangeValue} required />
                     </div>
-                </div>
-                <div className="phonebox">
-                    <label>연락처</label>
-                    <input type="text" name="phone" value={orders.phone || ""} onChange={onChangeValue} />
-                </div>
 
-                <div>주문자 : {getCurrentUser.username}</div>
-                <div>상품 이름 : {name}</div>
-                <div>수량 : {count}</div>
-                <div>금액 : {price}</div>
-                <button onClick={saveOrders}>주문하기</button>
+                    <div className="ordererbox">
+                        <div className="orderer-item">주문자<span>{getCurrentUser.username}</span></div>
+                        <div className="orderer-item">상품명<span>{name}</span></div>
+                        <div className="orderer-item">주문수<span>{count}</span></div>
+                        <div className="orderer-item">총금액<span>{price}</span></div>
+                    </div>
 
-                <Link to={"/product"}>상품목록으로 돌아가기</Link>
+                    <button className="orderbtn" onClick={saveOrders}>주문하기</button>
+
+                    <Link className="order-link" to={"/product"}>상품목록으로 돌아가기</Link>
+                </div>
             </div>
+            <footer></footer>
         </div>
     )
 }
