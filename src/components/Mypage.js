@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import MypageOne from "./MypageOne";
+import MypageTwo from "./MypageTwo";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -54,16 +55,13 @@ const Mypage = () => {
     };
     
     const getCurrentUser = JSON.parse(localStorage.getItem("user"));
-
-    useEffect(() => {
-        finduser()
-    }, [])
     
     const finduser = () => {
         axios.get("http://localhost:8080/api/user", {params : getCurrentUser})
         .then(response => {
             setUser(response.data)
             console.log(response.data)
+
             const date = moment(response.data).format("YYYY-MM-DD")
             setDate(date)
         })
@@ -71,11 +69,15 @@ const Mypage = () => {
             console.log(e)
         })
     }
+
+    useEffect(() => {
+        finduser()
+    }, [])
     
     return (
         <div>
             <div className="mypagebox">
-                <img src={"images/img1.jpg"}  alt="profileimg"/>
+                <img src={"images/profile.jpg"}  alt="profileimg"/>
                 <Box className="mypagebox-list" sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}>
                 <Tabs
                     orientation="vertical"
@@ -92,23 +94,23 @@ const Mypage = () => {
                 </Tabs>
                     <TabPanel value={value} index={0}>
                         <div className="tab-item">
-                            아이디 : {users.userid}
+                            <span className="tab-item-id">아이디</span> <span>{users.userid}</span>
                         </div>
                         <div className="tab-item">
-                            이름 : {users.username}
+                            <span className="tab-item-id">이름</span> <span>{users.username}</span>
                         </div>
                         <div className="tab-item">
-                            이메일 : {users.email}
+                            <span className="tab-item-id">이메일</span> <span>{users.email}</span>
                         </div>
                         <div className="tab-item">
-                            가입 날짜 : {date2}
+                            <span className="tab-item-id">가입 날짜</span> <span>{date2}</span>
                         </div>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <MypageOne/>
+                        <MypageOne />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        Item Three
+                        <MypageTwo />
                     </TabPanel>
                     <TabPanel value={value} index={3}>
                         Item Four

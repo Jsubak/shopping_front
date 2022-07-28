@@ -27,13 +27,13 @@ const MypageOne = () => {
         <div>
             {orders &&
                 orders.map((order, index) => (
-                    <div className="list-box-item" key={index}>
-                        <div className="box-item">상품 번호 : {order.productid}</div>
-                        <div className="box-item">주문수량 : {order.productcount} </div>
-                        <div className="box-item">총금액 : {order.productprice}</div>
-                        <div className="box-item">핸드폰 : {order.phone}</div>
-                        <div className="box-item">주소 : {order.address}</div>
-                        <div className="box-item">주문날짜 : {order.orderdate.slice(0,10)}</div>
+                    <div className="order-list-box-item" key={index}>
+                        <div className="box-item"><span>상품 번호</span> <span>{order.productid}</span></div>
+                        <div className="box-item"><span>주문수량</span> <span>{order.productcount}</span></div>
+                        <div className="box-item"><span>총금액</span> <span>{order.productprice}</span></div>
+                        <div className="box-item"><span>핸드폰</span> <span>{order.phone}</span></div>
+                        <div className="box-item"><span>주소</span> <span>[{order.address.slice(0,5)}] {order.address.slice(5)}</span></div>
+                        <div className="box-item"><span>주문날짜</span> <span>{order.orderdate.slice(0,10)}</span></div>
                     </div> 
             ))}
         </div>
