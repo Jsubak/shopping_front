@@ -6,7 +6,7 @@
     margin-bottom: 40px;
 }
 
-.mypagebox img {
+.mypagebox .my-profile-img {
     width: 300px;
     height: 300px;
     object-fit: cover;
@@ -40,6 +40,7 @@
 
 .order-list-box-item .box-item {
     padding: 10px;
+    width: 552.8px;
 }
 
 .order-list-box-item .box-item span:nth-child(1) {
@@ -49,6 +50,12 @@
 
 .order-list-box-item .box-item span:nth-child(2) {
     padding-left: 10px;
+}
+
+.order-list-box-item .box-item img {
+    width: 400px;
+    height: 340px;
+    object-fit: cover;
 }
 
 
@@ -61,4 +68,29 @@
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
     color: rgba(0, 163, 192, 0.72) !important;
+}
+
+.css-19kzrtu {
+    padding: 0 24px 24px 24px !important;
+}
+
+/* pagination  */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+
+.pagination .pagination_item {
+    padding: 10px 14px;
+    margin-right: 12px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.pagination .pagination_item:hover {
+    background-color: #eee;
+    transition: all .2s;
 }

@@ -117,8 +117,9 @@ const Order = () => {
                         <div className="orderer-item">주문자<span>{getCurrentUser.username}</span></div>
                         <div className="orderer-item">상품명<span>{name}</span></div>
                         <div className="orderer-item">주문수<span>{count}</span></div>
-                        <div className="orderer-item">총금액<span>{price}</span></div>
+                        <div className="orderer-item">총금액<span>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span></div>
                     </div>
+                    <div>수신자</div>
 
                     <button className="orderbtn" onClick={saveOrders}>주문하기</button>
 
